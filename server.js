@@ -16,21 +16,21 @@ app.use(express.json());
 app.use(express.static("public"));
 
 
-mongoose.connect("mongodb://localhost/fitness-Tracker", { 
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-})
+// mongoose.connect("mongodb://localhost/fitness-Tracker", { 
+//   useNewUrlParser: true,
+//   useFindAndModify: false,
+//   useUnifiedTopology: true,
+// })
 
-// const database = require("./config/keys").mongoURI;
+const database = require("./config/keys").mongoURI;
 
-// // mongoose
-// //   .connect(
-// //     database,
-// //     { useNewUrlParser: true, useUnifiedTopology: true }
-// //   )
-// //   .then(() => console.log("MongoDB successfully connected"))
-//   .catch(err => console.log(err));
+mongoose
+  .connect(
+    database,
+    { useNewUrlParser: true, useUnifiedTopology: true }
+  )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
 
 // app.use(routes)
 app.use(require('./routes/api-routes.js'));
